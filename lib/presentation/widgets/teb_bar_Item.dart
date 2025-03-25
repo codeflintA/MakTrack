@@ -33,6 +33,7 @@ class _AnimatedTaskListTabsState extends State<AnimatedTaskListTabs>
           unselectedLabelColor: Colors.black,
           indicator: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
+            // ignore: deprecated_member_use
             color: Colors.deepPurple.withOpacity(0.2),
           ),
         ),

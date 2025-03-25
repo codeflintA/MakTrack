@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:maktrack/domain/entities/asset_path.dart';
-import 'package:maktrack/domain/entities/color.dart';
 import 'package:maktrack/presentation/widgets/custom_app_bar.dart';
 import 'package:maktrack/presentation/widgets/total_price_widget.dart';
 
