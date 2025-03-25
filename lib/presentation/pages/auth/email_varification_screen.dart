@@ -27,6 +27,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   }
 
   final _emailTEController = TextEditingController();
+  // ignore: unused_field
   final _phoneNumberTEController = TextEditingController();
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
 

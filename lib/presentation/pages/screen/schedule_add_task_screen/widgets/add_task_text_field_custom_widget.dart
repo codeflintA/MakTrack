@@ -27,16 +27,16 @@ class _AddTaskTextFieldCustomWidgetState
   addTask() async {
     int value = await taskController.addTask(
         task: Task(
-          title: titleController.text,
-          note: noteController.text,
-          date: DateFormat.yMd().format(selectedDate),
-          startTime: startTime,
-          endTime: endTime,
-          reminder: selectedReminder,
-          repeat: selectedRepeat,
-          color: _isSelected,
-          isCompleted: 0,
-        ));
+      title: titleController.text,
+      note: noteController.text,
+      date: DateFormat.yMd().format(selectedDate),
+      startTime: startTime,
+      endTime: endTime,
+      reminder: selectedReminder,
+      repeat: selectedRepeat,
+      color: _isSelected,
+      isCompleted: 0,
+    ));
 
     print("My value is $value");
   }
@@ -117,7 +117,6 @@ class _AddTaskTextFieldCustomWidgetState
     });
   }
 
-
   // Selected Reminder
   int selectedReminder = 5;
   List<int> reminders = [5, 10, 15, 20, 25, 30];
@@ -164,6 +163,7 @@ class _AddTaskTextFieldCustomWidgetState
         children: [
           Text("Date"),
           TextField(
+            // ignore: unnecessary_null_comparison
             readOnly: widget == null ? false : true,
             decoration: InputDecoration(
                 suffixIcon: IconButton(
@@ -192,6 +192,7 @@ class _AddTaskTextFieldCustomWidgetState
               children: [
                 Text("Start Time"),
                 TextField(
+                  // ignore: unnecessary_null_comparison
                   readOnly: widget == null ? false : true,
                   decoration: InputDecoration(
                       hintText: startTime,
@@ -326,10 +327,10 @@ class _AddTaskTextFieldCustomWidgetState
               Text(
                 "Color",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -338,8 +339,8 @@ class _AddTaskTextFieldCustomWidgetState
                     color: index == 0
                         ? RColors.snackBarColorR
                         : index == 1
-                        ? RColors.snackBarColorS
-                        : RColors.blackButtonColor2,
+                            ? RColors.snackBarColorS
+                            : RColors.blackButtonColor2,
                     onTap: () {
                       setState(() {
                         _isSelected = index;
@@ -348,9 +349,9 @@ class _AddTaskTextFieldCustomWidgetState
                     },
                     child: _isSelected == index
                         ? Icon(
-                      Icons.done,
-                      color: Colors.white,
-                    )
+                            Icons.done,
+                            color: Colors.white,
+                          )
                         : null,
                   );
                 }),
@@ -373,10 +374,10 @@ class _AddTaskTextFieldCustomWidgetState
                 child: Text(
                   "Create Task",
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
                 ),
               ),
             ),

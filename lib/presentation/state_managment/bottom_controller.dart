@@ -10,6 +10,7 @@ class BottomController extends GetxController {
 
   final List<Widget> pages = [
     LeaderProjectDetails(),
+    LeaderProjectDetails(),
     ViewTaskScreen(),
     const Center(child: Text("Send Page")),
     const Center(child: Text("Profile Page")),

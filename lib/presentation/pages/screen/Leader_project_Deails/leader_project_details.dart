@@ -13,6 +13,13 @@ class LeaderProjectDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> inputData = Get.arguments ??
+        [
+          {"projects": "0", "amount": "0"},
+          {"projects": "0", "amount": "0"},
+          {"projects": "0", "amount": "0"},
+          {"projects": "0", "amount": "0"},
+        ];
     final CalendarController controller = Get.put(CalendarController());
     final List<String> progressName = [
       'Total',
@@ -100,7 +107,7 @@ class LeaderProjectDetails extends StatelessWidget {
                       Expanded(
                         child: GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: progressName.length,
+                          itemCount: inputData.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -148,7 +155,7 @@ class LeaderProjectDetails extends StatelessWidget {
                                           color: Colors.white,
                                         ),
                                         TextWidget(
-                                          text: '40',
+                                          text: inputData[index]["projects"],
                                           size: 13,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white,
@@ -156,7 +163,7 @@ class LeaderProjectDetails extends StatelessWidget {
                                       ],
                                     ),
                                     TextWidget(
-                                      text: '15,000.00',
+                                      text: inputData[index]["amount"],
                                       size: 13,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.white,

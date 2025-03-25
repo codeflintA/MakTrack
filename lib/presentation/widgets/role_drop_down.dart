@@ -40,6 +40,7 @@ class _RoleDropdownState extends State<RoleDropdown> {
               border: Border.all(color: RColors.smallFontColor, width: 1),
               boxShadow: [
                 BoxShadow(
+                  // ignore: deprecated_member_use
                   color: Colors.grey.withOpacity(0.2),
                   spreadRadius: 2,
                   blurRadius: 5,
@@ -81,6 +82,7 @@ class _RoleDropdownState extends State<RoleDropdown> {
                 border: Border.all(color: RColors.smallFontColor, width: 1),
                 boxShadow: [
                   BoxShadow(
+                    // ignore: deprecated_member_use
                     color: Colors.grey.withOpacity(0.2),
                     spreadRadius: 2,
                     blurRadius: 5,
