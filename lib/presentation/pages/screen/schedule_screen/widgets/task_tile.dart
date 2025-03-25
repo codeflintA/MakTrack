@@ -28,10 +28,10 @@ class TaskTile extends StatelessWidget {
                 Text(
                   task?.title ?? "",
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                 ),
                 SizedBox(
                   height: 12,
@@ -48,9 +48,9 @@ class TaskTile extends StatelessWidget {
                     Text(
                       "${task!.startTime} - ${task!.endTime}",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 13,
-                        color: Colors.grey[100],
-                      ),
+                            fontSize: 13,
+                            color: Colors.grey[100],
+                          ),
                     ),
                   ],
                 ),
@@ -58,9 +58,9 @@ class TaskTile extends StatelessWidget {
                 Text(
                   task?.note ?? "",
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 15,
-                    color: Colors.grey[100],
-                  ),
+                        fontSize: 15,
+                        color: Colors.grey[100],
+                      ),
                 ),
               ],
             ),
@@ -69,6 +69,7 @@ class TaskTile extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 10),
             height: 60,
             width: 0.5,
+            // ignore: deprecated_member_use
             color: Colors.grey[200]!.withOpacity(0.7),
           ),
           RotatedBox(
@@ -76,10 +77,10 @@ class TaskTile extends StatelessWidget {
             child: Text(
               task!.isCompleted == 1 ? "COMPLETED" : "TODO",
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 10,
-                color: Colors.white,
-              ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                    color: Colors.white,
+                  ),
             ),
           ),
         ]),
