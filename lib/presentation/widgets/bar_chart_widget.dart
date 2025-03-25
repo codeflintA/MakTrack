@@ -20,6 +20,7 @@ Widget buildBarChart(List<String> departmentNames, List<double> completed,
             drawVerticalLine: false,
             horizontalInterval: 1000, // Interval for dollars
             getDrawingHorizontalLine: (value) => FlLine(
+              // ignore: deprecated_member_use
               color: Colors.grey.withOpacity(0.3),
               strokeWidth: 1.5,
               dashArray: [5, 5], // Dotted lines
@@ -98,6 +99,7 @@ BoxDecoration _boxDecoration() {
     borderRadius: BorderRadius.circular(20),
     boxShadow: [
       BoxShadow(
+          // ignore: deprecated_member_use
           color: Colors.grey.withOpacity(0.3),
           blurRadius: 8,
           spreadRadius: 2,

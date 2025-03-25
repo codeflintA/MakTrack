@@ -6,6 +6,8 @@ import 'package:maktrack/presentation/widgets/project_container.dart';
 import 'package:maktrack/presentation/widgets/text_widget.dart';
 import 'package:maktrack/presentation/widgets/top_bar_widget.dart';
 import 'package:maktrack/presentation/widgets/total_container.dart';
+import 'package:flutter/services.dart';
+import 'dart:io';
 
 class BossDashBoard extends StatelessWidget {
   const BossDashBoard({super.key});
@@ -57,26 +59,26 @@ class BossDashBoard extends StatelessWidget {
       ],
     ];
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        // Show confirmation dialog before popping the screen
-        bool shouldPop = await showDialog(
-          barrierDismissible: true,
+        bool? shouldExit = await showDialog(
           context: context,
+          barrierDismissible: false, // User must choose Yes or No
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Are you sure?"),
-              content: Text("Do you want to exit?"),
+              content: Text("Do you want to exit the app?"),
               actions: [
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop(false); // Don't pop the screen
+                    Navigator.of(context).pop(false); // Stay in the app
                   },
                   child: Text("No"),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop(true); // Allow pop
+                    Navigator.of(context).pop(true); // Close the app
                   },
                   child: Text("Yes"),
                 ),
@@ -84,7 +86,15 @@ class BossDashBoard extends StatelessWidget {
             );
           },
         );
-        return shouldPop; // Return true or false based on the user's choice
+
+        if (shouldExit == true) {
+          if (Platform.isAndroid) {
+            SystemNavigator.pop();
+          } else if (Platform.isIOS) {
+            exit(0);
+          }
+        }
+        return false;
       },
       child: Scaffold(
         body: SingleChildScrollView(

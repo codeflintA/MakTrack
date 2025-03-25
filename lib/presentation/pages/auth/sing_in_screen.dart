@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:maktrack/domain/entities/asset_path.dart';
 import 'package:maktrack/domain/entities/color.dart';
 import 'package:maktrack/firebase_auth_implement/firebase_auth_services.dart';
@@ -11,10 +12,13 @@ import 'package:maktrack/presentation/pages/screen/BossDashBoard/boss_dash_board
 import 'package:maktrack/presentation/pages/screen/Leader_project_Deails/leader_project_details.dart';
 import 'package:maktrack/presentation/pages/screen/ProjectDetails/super_admin_project_details.dart';
 import 'package:maktrack/presentation/pages/screen/Boss%20Project%20Details/boss_project_details.dart';
+import 'package:maktrack/presentation/pages/screen/login&signup_button_screen/smart_task_management.dart';
 import 'package:maktrack/presentation/pages/screen/onboarding/onboarding_screen.dart';
+import 'package:maktrack/presentation/state_managment/onboarding_controller.dart';
+import 'package:maktrack/presentation/widgets/custom_app_bar.dart';
 import 'package:maktrack/presentation/widgets/save_password_forget_button.dart';
-import '../../widgets/custom_app_bar.dart';
-import '../../widgets/sing_up_title.dart';
+import 'package:maktrack/presentation/widgets/sing_up_title.dart';
+
 
 class SingInScreen extends StatefulWidget {
   const SingInScreen({super.key});
@@ -24,6 +28,8 @@ class SingInScreen extends StatefulWidget {
 }
 
 class _SingInScreenState extends State<SingInScreen> {
+  final OnboardingController controller = Get.put(OnboardingController());
+  // ignore: unused_field
   final FirebaseAuthServices _auth = FirebaseAuthServices();
   final _emailTEController = TextEditingController();
   final _passwordTEController = TextEditingController();
@@ -38,8 +44,11 @@ class _SingInScreenState extends State<SingInScreen> {
         statusBarColor: RColors.bgColorColorS,
         statusBarIconBrightness: Brightness.dark));
 
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+      },
       child: Scaffold(
         body: SingleChildScrollView(
                 child: Padding(
@@ -55,7 +64,7 @@ class _SingInScreenState extends State<SingInScreen> {
                           text: 'Back',
                           images: AssetPath.logoPng,
                           onPressed: () {
-                            Get.to(OnboardingScreen());
+                            Get.to(SmartTaskManagement());
                           },
                         ),
                         SizedBox(height: 40),
