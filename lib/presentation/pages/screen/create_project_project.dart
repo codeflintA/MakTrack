@@ -19,17 +19,20 @@ class _CreateNewProjectState extends State<CreateNewProject> {
       "title": "Create a new project",
       "Total": "Project Details",
     },
-  ].map((task) => {
-    ...task,
-    "ProjectNameController": TextEditingController(),
-    "ProjectTypeController": TextEditingController(),
-    "ProjectProgressController": TextEditingController(),
-    "AssignDateController": TextEditingController(),
-    "ProjectTimelineController": TextEditingController(),
-  }).toList();
+  ]
+      .map((task) => {
+            ...task,
+            "ProjectNameController": TextEditingController(),
+            "ProjectTypeController": TextEditingController(),
+            "ProjectProgressController": TextEditingController(),
+            "AssignDateController": TextEditingController(),
+            "ProjectTimelineController": TextEditingController(),
+          })
+      .toList();
 
   /// **Date Picker Function**
-  Future<void> _selectDate(BuildContext context, TextEditingController controller) async {
+  Future<void> _selectDate(
+      BuildContext context, TextEditingController controller) async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -39,7 +42,8 @@ class _CreateNewProjectState extends State<CreateNewProject> {
 
     if (pickedDate != null) {
       setState(() {
-        controller.text = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+        controller.text =
+            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
       });
     }
   }
@@ -94,43 +98,53 @@ class _CreateNewProjectState extends State<CreateNewProject> {
                             Column(
                               children: [
                                 TextFormField(
-                                  controller: tasks[index]['ProjectNameController'],
-                                  decoration: customInputDecoration("Project Name"),
+                                  controller: tasks[index]
+                                      ['ProjectNameController'],
+                                  decoration:
+                                      customInputDecoration("Project Name"),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
-                                  controller: tasks[index]['ProjectTypeController'],
-                                  decoration: customInputDecoration("Project Type"),
+                                  controller: tasks[index]
+                                      ['ProjectTypeController'],
+                                  decoration:
+                                      customInputDecoration("Project Type"),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
-                                  controller: tasks[index]['ProjectProgressController'],
+                                  controller: tasks[index]
+                                      ['ProjectProgressController'],
                                   keyboardType: TextInputType.number,
-                                  decoration: customInputDecoration("Project Progress (%)"),
+                                  decoration: customInputDecoration(
+                                      "Project Progress (%)"),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
-                                  controller: tasks[index]['AssignDateController'],
+                                  controller: tasks[index]
+                                      ['AssignDateController'],
                                   readOnly: true,
                                   decoration: customInputDecoration(
                                     "Assign Date",
                                     suffixIcon: IconButton(
                                       icon: const Icon(Icons.calendar_today),
-                                      onPressed: () => _selectDate(
-                                          context, tasks[index]['AssignDateController']),
+                                      onPressed: () => _selectDate(context,
+                                          tasks[index]['AssignDateController']),
                                     ),
                                   ),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
-                                  controller: tasks[index]['ProjectTimelineController'],
+                                  controller: tasks[index]
+                                      ['ProjectTimelineController'],
                                   readOnly: true,
                                   decoration: customInputDecoration(
                                     "Project Timeline",
                                     suffixIcon: IconButton(
                                       icon: const Icon(Icons.calendar_today),
                                       onPressed: () => _selectDate(
-                                          context, tasks[index]['ProjectTimelineController']),
+                                          context,
+                                          tasks[index]
+                                              ['ProjectTimelineController']),
                                     ),
                                   ),
                                 ),
@@ -148,20 +162,17 @@ class _CreateNewProjectState extends State<CreateNewProject> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.to(()=>ViewTaskScreen());
-
+                    Get.to(() => ViewTaskScreen());
                   },
                   child: const Text("Save Project"),
                 ),
               ),
-
             ],
           ),
         ),
       ),
     );
   }
-
 
   InputDecoration customInputDecoration(String hint, {Widget? suffixIcon}) {
     return InputDecoration(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:maktrack/domain/entities/asset_path.dart';
-import 'package:maktrack/domain/entities/color.dart';
 import 'package:maktrack/presentation/widgets/selected_tab.dart';
 import 'package:maktrack/presentation/widgets/top_bar_widget.dart';
 import '../../widgets/project_tab_card.dart';
 
 class ViewTaskScreen extends StatefulWidget {
-
-  const ViewTaskScreen({super.key,});
+  const ViewTaskScreen({
+    super.key,
+  });
 
   @override
   State<ViewTaskScreen> createState() => _ViewTaskScreenState();
