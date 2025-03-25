@@ -53,10 +53,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18,
-                                color: Colors.black54,
-                              ),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18,
+                                    color: Colors.black54,
+                                  ),
                             ),
                             Text(
                               getFormattedDate(),
@@ -64,10 +64,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24,
-                                color: Colors.black,
-                              ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24,
+                                    color: Colors.black,
+                                  ),
                             ),
                           ],
                         ),
@@ -89,10 +89,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                     .textTheme
                                     .bodyMedium
                                     ?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
                               ),
                             ),
                           ),
@@ -155,7 +155,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  showBottomSheet(context, filteredTasks[index]);
+                                  showBottomSheet(
+                                      context, filteredTasks[index]);
                                 },
                                 child: TaskTile(
                                   task: filteredTasks[index],
@@ -177,9 +178,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   }
 
   void showBottomSheet(BuildContext context, Task task) {
+    // ignore: unnecessary_null_comparison
     if (task == null) {
       print('Task is null');
-      return;  // Exit early if task is null
+      return; // Exit early if task is null
     }
 
     Get.bottomSheet(Container(
@@ -209,13 +211,13 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           task.isCompleted == 1
               ? Container()
               : _bottomSheetButton(
-            label: 'Task Completed',
-            onTap: () {
-              Get.back();
-            },
-            color: RColors.blueButtonColors,
-            context: context,
-          ),
+                  label: 'Task Completed',
+                  onTap: () {
+                    Get.back();
+                  },
+                  color: RColors.blueButtonColors,
+                  context: context,
+                ),
           SizedBox(
             height: 20,
           ),
@@ -273,10 +275,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           child: Text(
             label,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: isClose == true ? Colors.black : Colors.white,
-            ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: isClose == true ? Colors.black : Colors.white,
+                ),
           ),
         ),
       ),

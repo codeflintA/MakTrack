@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:maktrack/domain/entities/asset_path.dart';
 import 'package:maktrack/domain/entities/color.dart';
+import 'package:maktrack/presentation/pages/screen/bottom_navigation_bar_screen/bottom_nav_bar.dart';
 import 'package:maktrack/presentation/widgets/custom_app_bar.dart';
 import 'package:maktrack/presentation/widgets/total_price_widget.dart';
 
@@ -19,18 +20,29 @@ class _LeaderInputScreenState extends State<LeaderInputScreen> {
       "Total": "Total Project",
       "icon": AssetPath.totalPricePng
     },
-    {"title": "Task 2 ", "Total": "WIP", "icon": AssetPath.wipPng},
-    {"title": "Task 3 ", "Total": "Revision", "icon": AssetPath.revisionPng},
-    {"title": "Task 4", "Total": "Complete", "icon": AssetPath.completePng},
-
+    {
+      "title": "Task 2 ",
+      "Total": "WIP",
+      "icon": AssetPath.wipPng,
+    },
+    {
+      "title": "Task 3 ",
+      "Total": "Revision",
+      "icon": AssetPath.revisionPng,
+    },
+    {
+      "title": "Task 4",
+      "Total": "Complete",
+      "icon": AssetPath.completePng,
+    },
   ]
       .map((task) => {
-    ...task,
-    "amount": "",
-    "projects": "",
-    "amountController": TextEditingController(),
-    "projectsController": TextEditingController(),
-  })
+            ...task,
+            "amount": "",
+            "projects": "",
+            "amountController": TextEditingController(),
+            "projectsController": TextEditingController(),
+          })
       .toList();
 
   InputDecoration customInputDecoration(String hint) {
@@ -113,7 +125,7 @@ class _LeaderInputScreenState extends State<LeaderInputScreen> {
                                 Expanded(
                                   child: TextFormField(
                                     controller: tasks[index]
-                                    ['amountController'],
+                                        ['amountController'],
                                     keyboardType: TextInputType.number,
                                     decoration: customInputDecoration("Amount"),
                                     onChanged: (value) {
@@ -125,10 +137,10 @@ class _LeaderInputScreenState extends State<LeaderInputScreen> {
                                 Expanded(
                                   child: TextFormField(
                                     controller: tasks[index]
-                                    ['projectsController'],
+                                        ['projectsController'],
                                     keyboardType: TextInputType.number,
                                     decoration:
-                                    customInputDecoration("Projects"),
+                                        customInputDecoration("Projects"),
                                     onChanged: (value) {
                                       tasks[index]['projects'] = value;
                                     },
@@ -148,6 +160,15 @@ class _LeaderInputScreenState extends State<LeaderInputScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigate to the next screen where the dashboard is
+
+                    List<Map<String, dynamic>> inputData = tasks.map((task) {
+                      return {
+                        "amount": task["amountController"].text,
+                        "projects": task["projectsController"].text,
+                      };
+                    }).toList();
+
+                    Get.to(() => Bottom(), arguments: inputData);
                   },
                   child: const Text("Proceed to Dashboard"),
                 ),
